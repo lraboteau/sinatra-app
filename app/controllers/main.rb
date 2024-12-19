@@ -9,6 +9,15 @@ class Main < Sinatra::Base
     set :root, File.dirname(__FILE__)
     set :public_folder, 'public'
     set :views, 'app/views'
+
+    register Sinatra::ActiveRecordExtension
+  end
+
+  #set :database_file, 'config/database.yml'
+
+  configure :development do
+    # allows to refresh the app without restarting it
+    register Sinatra::Reloader
   end
 
   # Index
